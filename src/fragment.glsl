@@ -19,7 +19,7 @@ void main() {
   vec2 webcamCoord = (uv / resRatio) / 2.0 + vec2(0.5);
 
   vec2 flipwcord = vec2(1.) - webcamCoord;
-  vec2 backCoord = uv * (1.0 + 0.01);
+  vec2 backCoord = uv * (1.0 + 0.00);
   backCoord = (backCoord / 2.0) + vec2(0.5);
 
   vec3 webcamColor = texture2D(webcam, flipwcord).rgb;
@@ -32,7 +32,7 @@ void main() {
   float eye = facePaintColor.g;
   float mouth = facePaintColor.r;
 
-  if (face > 0.3) {
+  if (face > 0.2) {
     color = webcamColor * 0.2 + facePaintColor.rgb * 0.8;
     // color = backBufferColor;
   }

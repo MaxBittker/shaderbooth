@@ -21,15 +21,21 @@ function drawShape(points) {
   }
 
   ctx.closePath();
+  ctx.stroke();
   ctx.fill();
 }
 function paintFace(annotations) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.lineCap = "round";
 
   let silhouette = annotations["silhouette"];
   let convexsilhouette = hull(silhouette, 1000);
   ctx.fillStyle = `#008`;
+  ctx.strokeStyle = `#004`;
+  ctx.lineWidth = 2;
   drawShape(convexsilhouette);
+  ctx.lineWidth = 0;
+  ctx.strokeStyle = "rgba(1, 1, 1, 0)";
 
   let leftEyebrow = [
     ...annotations["leftEyebrowLower"],
@@ -109,7 +115,8 @@ function paintFace(annotations) {
   ];
   let convexNosePath = hull(nosePath, 1000);
   ctx.fillStyle = `#00F`;
-
+  ctx.strokeStyle = `#00C`;
+  ctx.lineWidth = 2;
   drawShape(convexNosePath);
 
   return ctx;
