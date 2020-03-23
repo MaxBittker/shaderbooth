@@ -4,6 +4,7 @@
 var CodeMirror = require("codemirror/lib/codemirror");
 require("codemirror/mode/clike/clike");
 // require("codemirror/addon/hint/javascript-hint");
+require("codemirror/addon/edit/closebrackets");
 require("codemirror/addon/hint/show-hint");
 require("codemirror/addon/selection/mark-selection");
 require("codemirror/addon/comment/comment");
@@ -26,7 +27,8 @@ var EditorClass = function() {
     mode: { name: "x-shader/x-fragment", globalVars: true },
 
     lineWrapping: true,
-    styleSelectedText: true
+    styleSelectedText: true,
+    autoCloseBrackets: true
   });
   this.cm.setOption("extraKeys", {
     "Ctrl-/": () => this.cm.execCommand("toggleComment")
