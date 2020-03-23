@@ -21,28 +21,18 @@ void main() {
   vec2 flipwcord = vec2(1.) - webcamCoord;
   vec2 backCoord = uv * (1.0 + 0.01);
   backCoord = (backCoord / 2.0) + vec2(0.5);
-
   vec3 webcamColor = texture2D(webcam, flipwcord).rgb;
   vec3 backBufferColor = texture2D(backBuffer, backCoord).rgb;
   vec4 facePaintColor = texture2D(faceDetection, flipwcord).rgba;
-
   vec3 color = webcamColor;
 
-  float face = facePaintColor.b;
-  float eye = facePaintColor.g;
-  float mouth = facePaintColor.r;
-
-  if (face > 0.3) {
-    color = webcamColor * 0.2 + facePaintColor.rgb * 0.8;
-    // color = backBufferColor;
+  if (!hasFace) {
+    float scanLine = mod(time * 0.5, 1.0);
+    if (abs(uvN.x - scanLine) < pixel.x * 1.) {
+      color += vec3(0., 1.0, 0.) *
+               (0.5 + max(sin(uvN.y * 200. + time * 2.0), 0.0) * 0.5);
+    }
+    color.g = color.g * 0.5 + backBufferColor.g * 0.5;
   }
-  if (eye > 0.4) {
-    // color = webcamColor;
-    // color = vec3(1.0, 0., 0.) + webcamColor;
-  }
-  if (mouth > 0.6) {
-    // color = webcamColor;
-  }
-
   gl_FragColor = vec4(color, 1);
 }

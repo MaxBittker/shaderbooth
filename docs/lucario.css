@@ -9,6 +9,8 @@
 .cm-s-lucario .CodeMirror-gutters {
   background-color: rgba(0, 0, 0, 0) !important;
   color: #f8f8f2 !important;
+  font-size: 15px;
+
   border: none;
 }
 .cm-s-lucario .CodeMirror-gutters {
