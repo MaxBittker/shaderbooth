@@ -12,16 +12,6 @@ uniform vec2 scaledVideoResolution;
 
 varying vec2 uv;
 
-// clang-format off
-#pragma glslify: squareFrame = require("glsl-square-frame")
-#pragma glslify: worley2D = require(glsl-worley/worley2D.glsl)
-#pragma glslify: hsv2rgb = require('glsl-hsv2rgb')
-#pragma glslify: luma = require(glsl-luma)
-#pragma glslify: smin = require(glsl-smooth-min)
-#pragma glslify: fbm3d = require('glsl-fractal-brownian-noise/3d')
-#pragma glslify: noise = require('glsl-noise/simplex/3d')
-
-// clang-format on
 #define PI 3.14159265359
 
 void main() {

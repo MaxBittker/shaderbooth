@@ -3,18 +3,28 @@ const { setupWebcam } = require("./src/setup-facemesh.js");
 let shaders = require("./src/pack.shader.js");
 
 let { paintFace } = require("./src/paint");
+const Editor = require("./src/editor.js");
 
-let vert = shaders.vertex;
-let frag = shaders.fragment;
+var editor = new Editor();
+// let vert = shaders.vertex;
+// let frag = shaders.fragment;
+let knownGoodShader = shaders.fragment;
 
-shaders.on("change", () => {
-  console.log("update");
-  vert = shaders.vertex;
-  frag = shaders.fragment;
-  let overlay = document.getElementById("regl-overlay-error");
-  overlay && overlay.parentNode.removeChild(overlay);
+// shaders.on("change", () => {
+//   console.log("update");
+//   vert = shaders.vertex;
+//   frag = shaders.fragment;
+//   // editor.setValue(frag);
+
+//   // let overlay = document.getElementById("regl-overlay-error");
+//   // overlay && overlay.parentNode.removeChild(overlay);
+// });
+editor.setValue(shaders.fragment);
+editor.cm.on("change", c => {
+  console.log(c);
+  let newShader = editor.getValue();
+  shaders.fragment = newShader;
 });
-
 const lastFrame = regl.texture();
 
 let paintElement = document.getElementById("paint"); //.getContext("2d");
@@ -66,17 +76,25 @@ setupWebcam({
 
     regl.frame(function(context) {
       let keyPoints = getKeyPoints();
-      // console.log(keyPoints);
-      regl.clear({
-        color: [0, 0, 0, 1]
-      });
+      // regl.clear({
+      //   color: [0, 0, 0, 1]
+      // });
       if (keyPoints) {
         hasFace = true;
         ctx = paintFace(keyPoints);
         faceDetectionTexture.subimage(ctx);
       }
+      try {
+        drawTriangle();
+      } catch (e) {
+        console.log(e);
+        // debugger;
+        // editor.flashCode(100, 200);
+        shaders.fragment = knownGoodShader;
 
-      drawTriangle();
+        return;
+      }
+      knownGoodShader = shaders.fragment;
 
       lastFrame({
         copy: true

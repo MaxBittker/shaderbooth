@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>glslify boilerplate</title>
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./lucario.css">
 
   <body>
     <button id='start'>Click me</button>
@@ -11,46 +13,8 @@
     <video id="video" loop playsinline autoplay></video>
     <canvas id="paint"></canvas>
     <canvas id="target"></canvas>
-    <style>
-      video {
-        /* height: 100vh; */
-        width: 20%;
-        height: 20%;
-        /* margin-top: 100vh; */
-        position: absolute;
-
-      }
-
-      button {
-        position: absolute;
-        z-index: 1000;
-        width: 100px;
-        height: 50px;
-      }
-
-      canvas {
-        position: absolute;
-        z-index: 999;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        left:0;
-        top:0;
-      }
-      #paint{
-        display: none;
-        bottom: 0 !important;
-        top:unset;
-      }
-      #target {
-        /* z-index: -4; */
-      }
-      body {
-        width: 100vw;
-        margin:0;
-      }
-    </style>
+    <!-- <div class="CodeMirror-scroll"></div> -->
+    <div id="modal-header"></div>
   </body>
   <!-- <script src="./CCapture.all.min.js"></script> -->
 

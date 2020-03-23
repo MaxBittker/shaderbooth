@@ -42,8 +42,8 @@ function paintFace(annotations) {
   ];
 
   ctx.fillStyle = `#048`;
-  drawShape(hull(leftEyebrow, 1000));
-  drawShape(hull(rightEyebrow, 1000));
+  drawShape(hull(leftEyebrow, 20));
+  drawShape(hull(rightEyebrow, 20));
 
   let leftEye2 = [
     ...annotations["leftEyeLower2"],
