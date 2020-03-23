@@ -1,0 +1,41 @@
+{
+  "name": "face-mesh-shader",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/shader-reload-cli index.js:bundle.js --dir docs/ --cors",
+    "build": "./node_modules/.bin/browserify -t glslify -g uglifyify index.js -o docs/bundle.js"
+  },
+  "author": "maxbittker <maxbittker@gmail.com> (maxbittker.github.io)",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow-models/facemesh": "0.0.1",
+    "@tensorflow/tfjs-converter": "^1.7.0",
+    "@tensorflow/tfjs-core": "^1.7.0",
+    "bottom-tip": "^0.0.4",
+    "browserify": "^16.2.0",
+    "ccapture.js": "^1.1.0",
+    "convex-hull": "^1.0.3",
+    "getusermedia": "^2.0.1",
+    "gl-mat4": "^1.2.0",
+    "glsl-color": "^0.0.1",
+    "glsl-fractal-brownian-noise": "^1.1.0",
+    "glsl-hsv2rgb": "^1.0.0",
+    "glsl-luma": "^1.0.1",
+    "glsl-noise": "^0.0.0",
+    "glsl-smooth-min": "^1.0.0",
+    "glsl-square-frame": "^1.0.1",
+    "glsl-worley": "^1.0.2",
+    "hull.js": "^1.0.0",
+    "regl": "^1.3.1",
+    "regl-shader-error-overlay": "1.1.0",
+    "uglifyify": "^4.0.5",
+    "webrtc-adapter": "^6.1.3"
+  },
+  "devDependencies": {
+    "glslify": "^6.1.0",
+    "shader-reload-cli": "^1.0.0",
+    "gh-pages": "^1.1.0"
+  }
+}
