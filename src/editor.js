@@ -24,10 +24,13 @@ var EditorClass = function() {
     theme: "lucario",
     value: "hello",
     mode: { name: "x-shader/x-fragment", globalVars: true },
+
     lineWrapping: true,
     styleSelectedText: true
   });
-
+  this.cm.setOption("extraKeys", {
+    "Ctrl-/": () => this.cm.execCommand("toggleComment")
+  });
   this.cm.refresh();
 
   this.show();
