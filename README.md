@@ -19,8 +19,7 @@ and motivated by a frustration with walled gardens like those Spark AR instagram
 Todo:
 
 localstorage persist
-show errors
-\be helpful with errors
+improve errors
 codemirror hints/suggestions
 browse examples
 upload function
