@@ -21,11 +21,16 @@ Todo:
 localstorage persist
 improve errors
 codemirror hints/suggestions
-browse examples
-upload function
-hotlinkable
 timeout to fade code away
 view-mode for mobile
 
-pass in landmarks to shader.
+backend:
+browse examples
+upload function
+hotlinkable
+
+future:
+background subtraction.
+pass in more landmarks to shader.
 GPU based paint.js?
+custom textures, texture editor
