@@ -14,20 +14,32 @@
   border: none;
 }
 span[role="presentation"] {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.24);
   filter: drop-shadow(1px 1px 3px black);
+}
+.cm-matchhighlight {
+  /* background: #b69d2cff; */
+  text-decoration: underline #e6c845;
 }
 .cm-s-lucario .CodeMirror-gutters {
   color: #2b3e50;
 }
+.cm-custom-error{
+    background-color: rgba(218, 40, 40, 0.801) !important;
+}
+.lint-error{
+    /* background-color: rgba(218, 40, 40, 0.801) !important; */
+}
 .cm-s-lucario .CodeMirror-cursor {
   border-left: solid thin #e6c845;
+  filter: drop-shadow(1px 1px 3px rgb(245, 245, 245));
 }
 .cm-s-lucario .CodeMirror-linenumber {
   color: #f8f8f2;
 }
 .cm-s-lucario .CodeMirror-selected {
-  background: #243443;
+  /* background: #243443; */
+  background: rgb(182, 127, 44);
 }
 .cm-s-lucario .CodeMirror-line::selection,
 .cm-s-lucario .CodeMirror-line > span::selection,

@@ -6,6 +6,7 @@ require("codemirror/mode/clike/clike");
 // require("codemirror/addon/hint/javascript-hint");
 require("codemirror/addon/edit/closebrackets");
 require("codemirror/addon/hint/show-hint");
+require("codemirror/addon/search/match-highlighter");
 require("codemirror/addon/selection/mark-selection");
 require("codemirror/addon/comment/comment");
 
@@ -28,7 +29,9 @@ var EditorClass = function() {
 
     lineWrapping: true,
     styleSelectedText: true,
-    autoCloseBrackets: true
+    autoCloseBrackets: true,
+    showCursorWhenSelecting: true,
+    highlightSelectionMatches: true
   });
   this.cm.setOption("extraKeys", {
     "Ctrl-/": () => this.cm.execCommand("toggleComment")

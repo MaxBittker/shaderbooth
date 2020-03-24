@@ -6,13 +6,61 @@ let { paintFace } = require("./src/paint");
 const Editor = require("./src/editor.js");
 
 var editor = new Editor();
+shaders.fragment = shaders.fragment.replace(
+  `#define GLSLIFY 1
+`,
+  ""
+);
 let knownGoodShader = shaders.fragment;
 
+let widgets = [];
+let markers = [];
+function clearHints(errors) {
+  editor.cm.operation(function() {
+    for (var i = 0; i < widgets.length; ++i) {
+      editor.cm.removeLineWidget(widgets[i]);
+    }
+    widgets.length = 0;
+
+    for (var i = 0; i < markers.length; ++i) {
+      markers[i].clear();
+    }
+    markers.length = 0;
+  });
+}
+
+function displayError(line, offset, message, token) {
+  var msg = document.createElement("div");
+  if (widgets.some(widget => widget["_line_number"] == line)) {
+    return;
+  }
+  msg.appendChild(
+    document.createTextNode(
+      ("^" + message).padStart(offset + message.length + 1, "\xa0")
+    )
+  );
+  msg.className = "lint-error";
+  let lineWidget = editor.cm.addLineWidget(line - 1, msg, {
+    coverGutter: false,
+    noHScroll: true
+  });
+  lineWidget["_line_number"] = line;
+  widgets.push(lineWidget);
+  markers.push(
+    editor.cm.markText(
+      { line: line - 1, ch: offset },
+      { line: line - 1, ch: offset + token.length },
+      { className: "cm-custom-error", attributes: { alt: message } }
+    )
+  );
+}
+
+window.shader_error_hook = displayError;
 editor.setValue(shaders.fragment);
 editor.cm.on("change", c => {
-  console.log(c);
   let newShader = editor.getValue();
   shaders.fragment = newShader;
+  clearHints();
 });
 const lastFrame = regl.texture();
 
@@ -74,7 +122,7 @@ setupWebcam({
       try {
         drawTriangle();
       } catch (e) {
-        console.log(e);
+        // console.log(e);
         // debugger;
         // editor.flashCode(100, 200);
         shaders.fragment = knownGoodShader;
