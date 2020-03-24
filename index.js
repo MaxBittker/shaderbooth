@@ -5,6 +5,11 @@ let loadingShader = require("./src/loadingShader.js");
 let { paintFace } = require("./src/paint");
 const Editor = require("./src/editor.js");
 
+let infoButton = document.getElementById("info");
+infoButton.addEventListener("click", () => {
+  document.getElementById("info-box").classList.toggle("hidden");
+  infoButton.classList.toggle("open");
+});
 var editor = new Editor();
 shaders.fragment = shaders.fragment.replace(
   `#define GLSLIFY 1

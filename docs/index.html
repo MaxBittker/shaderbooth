@@ -3,21 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>glslify boilerplate</title>
+  <title>Shaderbooth</title>
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./lucario.css">
 
   <body>
     <button id='start'>Click me</button>
+    <div id="info-box" class="hidden">
+      <h1>Shaderbooth</h1>
+      INFO GOES HERE
+      <!-- <p>Shaderbooth is a editing environment for writing and sharing face filter artworks, based on fragment shaders and realtime facial landmark data.
+        </p>
+        <p>
+            Face detection uses TensorFlow.js <a href="https://github.com/tensorflow/tfjs-models/tree/master/facemesh">Facemesh</a>.
+        </p> -->
 
+
+        <!-- Inspired by the online tools where I learned to write shaders!
+        Shawn Lawson's [The_Force](https://github.com/shawnlawson/The_Force)
+        Community of [Shadertoy](https://shadertoy.com)
+        
+        plus shout outs to the book of shaders, 
+        Olivia Jack's [hydra](https://github.com/ojack/hydra)
+        Myron Krueger's [Videoplace](https://www.youtube.com/watch?v=dqZyZrN3Pl0) -->
+
+       <p>
+        made by <a href="https://maxbittker.com">max bittker</a>
+      </p>
+
+    </div>
+    <div id="tray">
+        <button>⮜</button>
+        <button>⮞</button>
+        <button id="info">?</button>
+        <!-- <button>upload</button> -->
+     </div>
     <video id="video" loop playsinline autoplay></video>
     <canvas id="paint"></canvas>
     <canvas id="target"></canvas>
-    <!-- <div class="CodeMirror-scroll"></div> -->
     <div id="modal-header"></div>
   </body>
-  <!-- <script src="./CCapture.all.min.js"></script> -->
-
   <script src="./adapter.js" type="text/javascript"></script>
   <script src="./bundle.js" type="text/javascript"></script>
 

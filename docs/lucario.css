@@ -16,6 +16,7 @@
 span[role="presentation"] {
   background-color: rgba(0, 0, 0, 0.24);
   filter: drop-shadow(1px 1px 3px black);
+  border-radius: 1px;
 }
 .cm-matchhighlight {
   /* background: #b69d2cff; */

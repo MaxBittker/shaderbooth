@@ -6,13 +6,49 @@ video {
   position: absolute;
 }
 
-button {
+.start {
   position: absolute;
   z-index: 10;
   width: 100px;
   height: 50px;
 }
+#tray{
+  position: fixed;
+  right:3;
+  bottom:3;
+  z-index: 9;;
+}
+#tray button{
+  height: 25px;
+  line-height: 25px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.4);
+  /* border: 1px black solid; */
+  border: 1px blue solid;
 
+}
+.open{
+  background-color: rgba(255,255,255,0.9) !important;
+}
+#info-box{
+  position: absolute;
+  background-color: rgba(255,255,255,0.9);
+  width:400px;
+  margin:auto;
+  border: 1px blue solid;
+  z-index: 9;
+  margin:0px;
+  padding:30px;
+  bottom:35px;
+  right:5px;
+}
+h1{
+  margin-top:0px;
+  margin-left:-5px;
+}
+.hidden{
+  display: none;
+}
 canvas {
   position: absolute;
   z-index: 0;
@@ -36,6 +72,7 @@ body {
   margin: 0;
   background-color: midnightblue;
   background: linear-gradient(-95deg, #49444d, #2e1437);
+  font-family: monospace;
 }
 
 .CodeMirror {
