@@ -19,8 +19,8 @@ and motivated by a frustration with walled gardens like those Spark AR instagram
 Todo:
 
 localstorage persist (& reset button?)
-improve errors
-codemirror hints/suggestions
+revisit errors
+codemirror typeahead
 timeout to fade code away
 view-mode for mobile
 
@@ -29,7 +29,7 @@ browse examples
 upload function
 hotlinkable
 
-future:
+features:
 provide glsl functions
 background subtraction.
 pass in more landmarks to shader.
