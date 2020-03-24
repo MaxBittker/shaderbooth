@@ -17,7 +17,7 @@ void main() {
   vec2 webcamCoord = (uv / resRatio) / 2.0 + vec2(0.5);
 
   vec2 flipwcord = vec2(1.) - webcamCoord;
-  vec2 backCoord = uv +pixel*2.;
+  vec2 backCoord = uv *0.99;
   backCoord = (backCoord / 2.0) + vec2(0.5);
 
   vec3 cam = texture2D(camTex, flipwcord).rgb;
@@ -29,8 +29,8 @@ void main() {
   float mouth = mask.r;
 
   vec3 color = cam;
-  //try uncommenting this line:
-  // color= previous;
+  // try uncommenting this line:
+  color= previous;
 
   if (face > 0.2) {
     color = cam * 0.9 + mask.rgb * 0.6;
