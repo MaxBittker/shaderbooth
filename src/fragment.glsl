@@ -31,7 +31,7 @@ void main() {
   float mouth = mask.r;
 
   if (face > 0.2) {
-    color = cam * 0.2 + mask.rgb * 0.8;
+    color = cam * 0.9 + mask.rgb * 0.6;
   }
   if (eye > 0.4) {
   }
