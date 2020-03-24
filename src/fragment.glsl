@@ -30,7 +30,7 @@ void main() {
 
   vec3 color = cam;
   // try uncommenting this line:
-  color= previous;
+  // color= previous;
 
   if (face > 0.2) {
     color = cam * 0.9 + mask.rgb * 0.6;

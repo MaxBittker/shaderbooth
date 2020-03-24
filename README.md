@@ -18,7 +18,7 @@ and motivated by a frustration with walled gardens like those Spark AR instagram
 
 Todo:
 
-localstorage persist
+localstorage persist (& reset button?)
 improve errors
 codemirror hints/suggestions
 timeout to fade code away
@@ -30,6 +30,7 @@ upload function
 hotlinkable
 
 future:
+provide glsl functions
 background subtraction.
 pass in more landmarks to shader.
 GPU based paint.js?
