@@ -13,6 +13,10 @@
 
   border: none;
 }
+span[role="presentation"] {
+  background-color: rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(1px 1px 3px black);
+}
 .cm-s-lucario .CodeMirror-gutters {
   color: #2b3e50;
 }

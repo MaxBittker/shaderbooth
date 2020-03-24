@@ -1,11 +1,10 @@
-precision mediump float;
+module.exports = `precision mediump float;
 uniform float tick;
 uniform float time;
 uniform bool hasFace;
 uniform vec2 resolution;
-uniform sampler2D backBuffer;
-uniform sampler2D webcam;
-uniform sampler2D faceDetection;
+uniform sampler2D previousTex;
+uniform sampler2D camTex;
 uniform vec2 videoResolution;
 uniform vec2 scaledVideoResolution;
 varying vec2 uv;
@@ -21,9 +20,8 @@ void main() {
   vec2 flipwcord = vec2(1.) - webcamCoord;
   vec2 backCoord = uv * (1.0 + 0.01);
   backCoord = (backCoord / 2.0) + vec2(0.5);
-  vec3 webcamColor = texture2D(webcam, flipwcord).rgb;
-  vec3 backBufferColor = texture2D(backBuffer, backCoord).rgb;
-  vec4 facePaintColor = texture2D(faceDetection, flipwcord).rgba;
+  vec3 webcamColor = texture2D(camTex, flipwcord).rgb;
+  vec3 backBufferColor = texture2D(previousTex, backCoord).rgb;
   vec3 color = webcamColor;
 
   if (!hasFace) {
@@ -36,3 +34,4 @@ void main() {
   }
   gl_FragColor = vec4(color, 1);
 }
+`;
