@@ -2,6 +2,7 @@ const regl = require("regl")("#target", { pixelRatio: 0.75 });
 const { setupWebcam } = require("./src/setup-facemesh.js");
 let shaders = require("./src/pack.shader.js");
 let loadingShader = require("./src/loadingShader.js");
+let prefix = require("./src/prefix.js");
 let { paintFace } = require("./src/paint");
 const Editor = require("./src/editor.js");
 
@@ -18,6 +19,7 @@ shaders.fragment = shaders.fragment.replace(
 );
 let knownGoodShader = shaders.fragment;
 
+let prefixLength = prefix.split(/\r\n|\r|\n/).length - 1;
 let widgets = [];
 let markers = [];
 function clearHints(errors) {
@@ -35,6 +37,7 @@ function clearHints(errors) {
 }
 
 function displayError(line, offset, message, token) {
+  line = line - prefixLength;
   var msg = document.createElement("div");
   if (widgets.some(widget => widget["_line_number"] == line)) {
     return;
@@ -62,6 +65,7 @@ function displayError(line, offset, message, token) {
 
 window.shader_error_hook = displayError;
 editor.setValue(shaders.fragment);
+
 editor.cm.on("change", c => {
   let newShader = editor.getValue();
   shaders.fragment = newShader;
@@ -100,7 +104,7 @@ setupWebcam({
         }
       },
 
-      frag: () => (hasFace ? shaders.fragment : loadingShader),
+      frag: () => (hasFace ? prefix + shaders.fragment : loadingShader),
       vert: () => shaders.vertex,
       attributes: {
         // Full screen triangle
@@ -127,7 +131,7 @@ setupWebcam({
       try {
         drawTriangle();
       } catch (e) {
-        // console.log(e);
+        console.log(e);
         // debugger;
         // editor.flashCode(100, 200);
         shaders.fragment = knownGoodShader;
