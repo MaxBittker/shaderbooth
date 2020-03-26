@@ -14,8 +14,8 @@ void main() {
 
   if (face > 0.2) {
 
-    color.rg *= 1.0 + 0.4 * floor(sin(uv.y * resolution.y / 10.) *
-                                  cos(uv.x * resolution.x / 10.));
+    color.rg *= 1.0 + 0.4 * floor(sin(uv.y * resolution.y / 5.) *
+                                  cos(uv.x * resolution.x / 5.));
   }
 
   // eye black
