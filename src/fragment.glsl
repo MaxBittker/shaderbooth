@@ -10,8 +10,10 @@ void main() {
   vec3 color = cam;
 
   // try uncommenting this line:
-  //     color = prev;
+  // color = getPrevious(uv + (cam.rg-cam.bb)*0.1);
+
   if (face > 0.2) {
+    color = cam;
     color = getPrevious(uv * 1.4);
   }
 
@@ -34,4 +36,3 @@ void main() {
   }
   gl_FragColor = vec4(color, 1);
 }
-s
