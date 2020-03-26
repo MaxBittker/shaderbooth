@@ -10,12 +10,9 @@ void main() {
   vec3 color = cam;
 
   // try uncommenting this line:
-  //   color = prev;
-
+  //     color = prev;
   if (face > 0.2) {
-
-    color.rg *= 1.0 + 0.4 * floor(sin(uv.y * resolution.y / 5.) *
-                                  cos(uv.x * resolution.x / 5.));
+    color = getPrevious(uv * 1.4);
   }
 
   // eye black
@@ -37,3 +34,4 @@ void main() {
   }
   gl_FragColor = vec4(color, 1);
 }
+s
