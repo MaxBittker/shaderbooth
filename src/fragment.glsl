@@ -13,7 +13,7 @@ void main() {
   // color = getPrevious(uv + (cam.rg-cam.bb)*0.1);
 
   if (face > 0.2) {
-    color = cam;
+    // or this one
     color = getPrevious(uv * 1.4);
   }
 
@@ -31,7 +31,7 @@ void main() {
   if (mouth > 0.6) {
     color = cam;
   }
-  if (max(abs(uv.x), abs(uv.y)) > 0.9) {
+  if (max(abs(uv.x), abs(uv.y)) > 0.95) {
     color = cam;
   }
   gl_FragColor = vec4(color, 1);
