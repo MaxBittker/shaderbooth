@@ -1,4 +1,10 @@
 // Welcome to Shaderbooth!
+//    ______           __        ___            __  __
+//   / __/ /  ___ ____/ /__ ____/ _ )___  ___  / /_/ /
+//  _\ \/ _ \/ _ `/ _  / -_) __/ _  / _ \/ _ \/ __/ _ \
+// /___/_//_/\_,_/\_,_/\__/_/ /____/\___/\___/\__/_//_/
+//
+
 // This is an interactive editor for making face filters with WebGL.
 // The language below is called GLSL, you can edit it to change the effect.
 // Press the arrows in the bottom right to see more examples!
