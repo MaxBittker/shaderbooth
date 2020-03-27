@@ -19,7 +19,7 @@ Todo:
 
 localstorage persist (& reset button?)
 revisit errors
-codemirror typeahead
+codemirror typeahead (anyword-hint)
 
 backend:
 browse examples
