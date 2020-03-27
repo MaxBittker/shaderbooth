@@ -1,11 +1,13 @@
 let facemesh = require("@tensorflow-models/facemesh");
 let tf = require("@tensorflow/tfjs-core");
 
+let loader = document.getElementById("loading");
 let model;
 let video = null;
 async function loadModel() {
   // Load the MediaPipe facemesh model.
   model = await facemesh.load({ maxFaces: 1 });
+  loader.style = "display:none";
 }
 let keypoints;
 let dirty = false;

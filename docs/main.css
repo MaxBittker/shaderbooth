@@ -208,3 +208,12 @@ body {
     display: none;
   }
 }
+
+#loading {
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  z-index: 11;
+  font-size: 1.5em;
+  background-color: rgba(5, 250, 59, 0.2);
+}

@@ -1,3 +1,8 @@
+// Welcome to Shaderbooth!
+// This is an interactive editor for making face filters with WebGL.
+// The language below is called GLSL, you can edit it to change the effect.
+// Press the arrows in the bottom right to see more examples!
+
 void main() {
 
   vec3 cam = getCam(uv);
