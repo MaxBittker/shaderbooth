@@ -76,7 +76,7 @@ function displayError(line, offset, message, token) {
       ("^" + message).padStart(offset + message.length + 1, "\xa0")
     )
   );
-  msg.className = "lint-error";
+  msg.className = "lint-error fade";
   let lineWidget = editor.cm.addLineWidget(line - 1, msg, {
     coverGutter: false,
     noHScroll: true

@@ -17,7 +17,7 @@ void main() {
 
     color = pixelate;
     // uncomment:
-    color = blur;
+    // color = blur;
   }
 
   gl_FragColor = vec4(color, 1);
