@@ -5,7 +5,6 @@ Shaderbooth is a browser based editing environment for writing and sharing face 
 Face detection uses TensorFlow.js [Facemesh](https://github.com/tensorflow/tfjs-models/tree/master/facemesh).
 
 ![demo](demo.png)
-![video](face.webm.gif)
 
 Inspired by:
 
@@ -21,8 +20,6 @@ Todo:
 localstorage persist (& reset button?)
 revisit errors
 codemirror typeahead
-timeout to fade code away
-view-mode for mobile
 
 backend:
 browse examples
@@ -30,7 +27,6 @@ upload function
 hotlinkable
 
 features:
-provide glsl functions
 background subtraction.
 pass in more landmarks to shader.
 GPU based paint.js?
