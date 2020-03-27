@@ -33,6 +33,14 @@ video {
 
   filter: drop-shadow(1px 1px 3px black);
 }
+
+svg {
+  /* stroke: rgba(255, 255, 255, 0.8); */
+  /* stroke-width: 40px; */
+  /* fill: transparent; */
+  fill: rgba(255, 255, 255, 0.8);
+}
+
 button:active {
   animation: pulse 0.1s 1 ease-out;
 }
