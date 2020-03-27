@@ -10,7 +10,7 @@ let demos = fs.readdirSync(__dirname + "/demos");
 let previousDemo = document.getElementById("prev");
 let nextDemo = document.getElementById("next");
 
-let demoIndex = 0;
+let demoIndex = demos.indexOf("starter.glsl");
 
 let { paintFace } = require("./src/paint");
 const Editor = require("./src/editor.js");
@@ -28,7 +28,7 @@ function replaceShader() {
     });
 }
 previousDemo.addEventListener("click", () => {
-  demoIndex = (demoIndex + demos.length + 1) % demos.length;
+  demoIndex = (demoIndex + demos.length - 1) % demos.length;
   replaceShader();
 });
 nextDemo.addEventListener("click", () => {
