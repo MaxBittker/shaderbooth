@@ -21,14 +21,16 @@ video {
 }
 #tray button {
   margin: 3px;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   line-height: 24px;
-  font-size: 18px;
-  color: whitesmoke;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
   background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 14px;
-  border: 1px rgba(255, 255, 255, 0.4) double;
+  border-radius: 100%;
+  /* border: 1px rgba(255, 255, 255, 0.4) double; */
+  border: 4px rgba(255, 255, 255, 0.4) double;
+
   filter: drop-shadow(1px 1px 3px black);
 }
 button:active {
@@ -64,6 +66,8 @@ div[class^="pulse-"] {
 }
 .open {
   background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 8px rgba(0, 0, 0, 0.9) double !important;
+
   color: black !important;
   /* filter:invert(100%); */
 }
@@ -71,24 +75,37 @@ div[class^="pulse-"] {
   color: black;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  border-radius: 15px 25px 4px 15px;
-  filter: drop-shadow(-1px -1px 3px white) drop-shadow(2px 2px 3px black);
+  border-radius: 4px 4px 4px 4x;
+  /* filter: drop-shadow(-1px -1px 3px white) drop-shadow(2px 2px 3px black); */
   /* box-shadow:  */
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.7);
-  width: 400px;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  top: 5px;
   margin: auto;
-  border: 4px black double;
+  border: 8px black double;
   z-index: 9;
   margin: 0px;
   padding: 20px;
-  bottom: 43px;
+  bottom: 60px;
   right: 8px;
 }
 h1 {
   margin-top: 0px;
   margin-left: -5px;
   font-size: 1.2em;
+  margin-bottom: 5px;
+}
+h3 {
+  margin-top: 0px;
+  margin-left: -5px;
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+p {
+  margin-top: 0px;
 }
 .hidden {
   display: none;
@@ -169,4 +186,24 @@ body {
   /* height: 300px; */
   color: black;
   direction: ltr;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -webkit-transition: opacity 0.5s linear;
+}
+
+.faded .fade {
+  transition: opacity 3s linear;
+  -moz-transition: opacity 3s linear;
+  -webkit-transition: opacity 3s linear;
+  opacity: 0;
+}
+
+@media only screen and (max-width: 700px) {
+  .CodeMirror {
+    display: none;
+  }
 }

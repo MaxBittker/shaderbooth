@@ -18,6 +18,7 @@ var EditorClass = function() {
 
   var container = document.createElement("div");
   container.setAttribute("id", "editor-container");
+  container.classList.add("fade");
   var el = document.createElement("TEXTAREA");
   document.body.appendChild(container);
   container.appendChild(el);

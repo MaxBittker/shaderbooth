@@ -7,18 +7,31 @@
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./codemirror.css">
   <link rel="stylesheet" href="./lucario.css">
-
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <body>
     <button id='start'>Click me</button>
     <div id="info-box" class="hidden">
       <h1>Shaderbooth</h1>
-      INFO GOES HERE
-      <!-- <p>Shaderbooth is a editing environment for writing and sharing face filter artworks, based on fragment shaders and realtime facial landmark data.
+      <p>Shaderbooth is a editing environment for writing and sharing face filter artworks, based on fragment shaders and realtime facial landmark data.
         </p>
         <p>
-            Face detection uses TensorFlow.js <a href="https://github.com/tensorflow/tfjs-models/tree/master/facemesh">Facemesh</a>.
-        </p> -->
+            Face detection uses the TensorFlow.js <a href="https://github.com/tensorflow/tfjs-models/tree/master/facemesh">Facemesh</a> model.
+        </p>
+        <p style="float:right;">
 
+            made by <a href="https://maxbittker.com">max bittker</a>
+            </p>
+      <p>
+        <a href="https://github.com/MaxBittker/shaderbooth">source code & issue tracker</a>
+      </p>
+      <hr>
+    
+        <h3>Available Uniforms and Utility Functions:</h3>
+        <pre id="reference" class="cm-s-default"></pre>
+    
 
         <!-- Inspired by the online tools where I learned to write shaders!
         Shawn Lawson's [The_Force](https://github.com/shawnlawson/The_Force)
@@ -28,14 +41,11 @@
         Olivia Jack's [hydra](https://github.com/ojack/hydra)
         Myron Krueger's [Videoplace](https://www.youtube.com/watch?v=dqZyZrN3Pl0) -->
 
-       <p>
-        made by <a href="https://maxbittker.com">max bittker</a>
-      </p>
-
+  
     </div>
-    <div id="tray">
-        <button>⮜</button>
-        <button>⮞</button>
+    <div id="tray" class="fade">
+        <button id="prev">◄</button>
+        <button id="next">►</button>
         <button id="info">?</button>
         <!-- <button>upload</button> -->
      </div>

@@ -1,4 +1,4 @@
-module.exports = `precision mediump float;
+precision mediump float;
 uniform float tick;
 uniform float time;
 uniform bool hasFace;
@@ -9,7 +9,6 @@ uniform vec2 videoResolution;
 uniform vec2 scaledVideoResolution;
 varying vec2 uv;
 
-#define PI 3.14159265359
 vec2 pixel = 1.0 / resolution;
 
 void main() {
@@ -34,4 +33,3 @@ void main() {
   }
   gl_FragColor = vec4(color, 1);
 }
-`;

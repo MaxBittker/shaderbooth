@@ -1,8 +1,17 @@
 const regl = require("regl")("#target", { pixelRatio: 0.75 });
 const { setupWebcam } = require("./src/setup-facemesh.js");
 let shaders = require("./src/pack.shader.js");
-let loadingShader = require("./src/loadingShader.js");
-let prefix = require("./src/prefix.js");
+let handleActivity = require("./src/fade.js");
+let buildReference = require("./src/reference.js");
+let fs = require("fs");
+let loadingShader = fs.readFileSync(__dirname + "/src/loadingShader.glsl");
+let prefix = fs.readFileSync(__dirname + "/src/prefix.glsl").toString();
+let demos = fs.readdirSync(__dirname + "/demos");
+let previousDemo = document.getElementById("prev");
+let nextDemo = document.getElementById("next");
+
+let demoIndex = 0;
+
 let { paintFace } = require("./src/paint");
 const Editor = require("./src/editor.js");
 
@@ -12,6 +21,26 @@ infoButton.addEventListener("click", () => {
   infoButton.classList.toggle("open");
 });
 var editor = new Editor();
+
+function replaceShader() {
+  let file = demos[demoIndex];
+  fetch("./demos/" + file)
+    .then(response => {
+      return response.text();
+    })
+    .then(data => {
+      editor.setValue(data);
+    });
+}
+previousDemo.addEventListener("click", () => {
+  demoIndex = (demoIndex + demos.length + 1) % demos.length;
+  replaceShader();
+});
+nextDemo.addEventListener("click", () => {
+  demoIndex = (demoIndex + 1) % demos.length;
+  replaceShader();
+});
+
 shaders.fragment = shaders.fragment.replace(
   `#define GLSLIFY 1
 `,
