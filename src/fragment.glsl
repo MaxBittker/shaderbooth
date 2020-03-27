@@ -13,20 +13,21 @@ void main() {
   // color = getPrevious(uv + (cam.rg-cam.bb)*0.1);
 
   if (face > 0.2) {
+    color = cam * blue;
     // or this one
-    color = getPrevious(uv * 1.4);
+    // color = getPrevious(rotate(uv, 0.1) * 1.1);
   }
 
   // eye black
   if (eye > 0.3) {
-    color = vec3(0.);
+    color = black;
   }
   if (eye > 0.6) {
     color = cam;
   }
   // lipstick
   if (mouth > 0.4) {
-    color = cam * vec3(1.0, 0.0, .0);
+    color = cam * red;
   }
   if (mouth > 0.6) {
     color = cam;
