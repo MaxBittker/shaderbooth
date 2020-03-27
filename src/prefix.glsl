@@ -10,8 +10,10 @@ uniform sampler2D camTex;
 uniform sampler2D maskTex;
 uniform sampler2D previousTex;
 // SPACER
-
 vec2 pixel = 1.0 / resolution;
+
+#define PI 3.1415926538
+#define TAU 6.283185307
 
 // SPACER
 
