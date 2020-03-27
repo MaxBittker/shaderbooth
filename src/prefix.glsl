@@ -5,6 +5,7 @@ uniform float time;
 uniform vec2 resolution;
 uniform vec2 videoResolution;
 uniform vec2 scaledVideoResolution;
+uniform vec2 faceCenter;
 uniform sampler2D camTex;
 uniform sampler2D maskTex;
 uniform sampler2D previousTex;

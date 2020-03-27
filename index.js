@@ -15,11 +15,6 @@ let demoIndex = 0;
 let { paintFace } = require("./src/paint");
 const Editor = require("./src/editor.js");
 
-let infoButton = document.getElementById("info");
-infoButton.addEventListener("click", () => {
-  document.getElementById("info-box").classList.toggle("hidden");
-  infoButton.classList.toggle("open");
-});
 var editor = new Editor();
 
 function replaceShader() {
@@ -92,6 +87,7 @@ function displayError(line, offset, message, token) {
   );
 }
 
+// this relies on a special forked regl.
 window.shader_error_hook = displayError;
 editor.setValue(shaders.fragment);
 
@@ -106,6 +102,8 @@ let paintElement = document.getElementById("paint"); //.getContext("2d");
 let faceDetectionTexture;
 
 let hasFace = false;
+
+let faceCenter = [0.5, 0.5];
 setupWebcam({
   regl,
   done: (webcam, { videoWidth, videoHeight, getKeyPoints }) => {
@@ -130,7 +128,11 @@ setupWebcam({
             vW / vH > videoWidth / videoHeight
               ? [videoWidth * (vH / videoHeight), vH]
               : [vW, videoHeight * (vW / videoWidth)]);
-        }
+        },
+        faceCenter: () => [
+          2 * (1.0 - faceCenter[0] / videoWidth) - 1.0,
+          2 * (1.0 - faceCenter[1] / videoHeight) - 1.0
+        ]
       },
 
       frag: () => (hasFace ? prefix + shaders.fragment : loadingShader),
@@ -154,6 +156,10 @@ setupWebcam({
       // });
       if (keyPoints) {
         hasFace = true;
+        faceCenter = keyPoints.noseTip[0];
+        // console.log(faceCenter[0]);
+        // console.log(keyPoints.midwayBetweenEyes);
+        // debugger;
         ctx = paintFace(keyPoints);
         faceDetectionTexture.subimage(ctx);
       }

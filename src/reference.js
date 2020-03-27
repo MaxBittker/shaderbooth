@@ -1,3 +1,9 @@
+let infoButton = document.getElementById("info");
+infoButton.addEventListener("click", () => {
+  document.getElementById("info-box").classList.toggle("hidden");
+  infoButton.classList.toggle("open");
+});
+
 let fs = require("fs");
 
 let prefix = fs.readFileSync(__dirname + "/prefix.glsl").toString();
