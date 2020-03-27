@@ -43,7 +43,7 @@ void main() {
   if (mouth > 0.6) {
     color = cam;
   }
-  if (max(abs(uv.x), abs(uv.y)) > 0.95) {
+  if (max(abs(uv.x), abs(uv.y)) > 0.99) {
     color = cam;
   }
   gl_FragColor = vec4(color, 1);
