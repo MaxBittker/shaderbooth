@@ -77,6 +77,7 @@ function setupWebcam(options) {
     };
 
     function gumSuccess(stream) {
+      loader.innerText = "Loading Model...";
       if ("srcObject" in video) {
         video.srcObject = stream;
       } else {
