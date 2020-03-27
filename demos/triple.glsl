@@ -7,12 +7,12 @@ void main() {
   vec3 color = cam;
 
   // try uncommenting this line:
-  color = getPrevious(uv + (cam.rg - cam.bb) * 0.1);
+  // color = getPrevious(uv + (cam.rg - cam.bb) * 0.1);
   if (getFace(uv) > 0.2) {
     color = cam;
   }
   float offset = 0.4;
-  //   offset *= sin(time*2.);
+  // offset *= sin(time*2.);
   if (getFace(uv - vec2(offset, 0.)) > face) {
     color = getCam(uv - vec2(offset, 0.));
   }
