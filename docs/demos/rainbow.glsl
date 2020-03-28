@@ -2,13 +2,13 @@ void main() {
 
   vec2 pos = uv;
   if (getFace(uv) < 0.5) {
-    pos.x += sin(time + pos.y * 90.) * 0.01;
+    pos.x += sin(400. + pos.y * 90.) * 0.01;
     pos.y += sin(pos.x * 90.) * 0.01;
   }
   vec3 color = getCam(pos);
   float l = luma(color);
   vec3 hsl = rgb2hsl(color);
-  float hue = (l + time * 0.2) * 0.1;
+  float hue = (l + 330. + mod(time, 60.)) * 0.1;
   hue *= l * 1.;
   hue = mod(hue, 1.0);
   color = hsl2rgb(hue, 0.7, hsl.z);
