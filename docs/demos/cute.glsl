@@ -18,9 +18,9 @@ void main() {
 
   if (getFace(uv) > 0.2) {
     color = blur;
-    color -= freckles * vec3(1.0) * 10.;
+    color -= freckles * vec3(1.0) * 7.;
     // blush:
-    color += frecklePattern * red * 2.;
+    color += frecklePattern * red * 1.5;
   }
 
   // lashes and pupils darker
