@@ -26,9 +26,11 @@ app.post("/upload", (req, res) => {
     .update(req.body.toString())
     .digest("hex")
     .slice(0, 5);
-  fs.promises.writeFile(path.join(filePath, id), req.body.toString(),{flag: "wx"}).catch(err=>{
-  	console.log(err);
-  });
+  fs.promises
+    .writeFile(path.join(filePath, id), req.body.toString(), { flag: "wx" })
+    .catch(err => {
+      console.log(err);
+    });
   res.send(JSON.stringify({ id }));
 });
 
