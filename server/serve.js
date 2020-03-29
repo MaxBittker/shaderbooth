@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
 const crypto = require("crypto");
+var cors = require("cors");
 
 const filePath = path.join(__dirname, "sketches");
 const port = 3002;
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(bodyParser.text());
 app.use("/static", express.static(filePath));
+app.use(cors());
 
 let cacheFiles = [];
 app.get("/", (req, res) => {
