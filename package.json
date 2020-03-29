@@ -13,6 +13,7 @@
     "@tensorflow-models/facemesh": "0.0.1",
     "@tensorflow/tfjs-converter": "^1.7.0",
     "@tensorflow/tfjs-core": "^1.7.1",
+    "airtable": "^0.8.1",
     "brfs": "^2.0.2",
     "browserify": "^16.5.0",
     "codemirror": "^5.52.2",
