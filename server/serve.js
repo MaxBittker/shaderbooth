@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.text());
 app.use("/static", express.static(filePath));
 
-let cacheFiles = null;
+let cacheFiles = [];
 app.get("/", (req, res) => {
   fs.promises.readdir(filePath).then(files => {
     cacheFiles = files;
@@ -26,8 +26,7 @@ app.post("/upload", (req, res) => {
     .update(req.body.toString())
     .digest("hex")
     .slice(0, 5);
-
-  fs.promises.writeFile(path.join(filePath, id), req.body.toString());
+  fs.promises.writeFile(path.join(filePath, id), "wx", req.body.toString());
   res.send(JSON.stringify({ id }));
 });
 
