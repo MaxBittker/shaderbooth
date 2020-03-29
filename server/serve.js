@@ -10,9 +10,10 @@ const port = 3002;
 
 const app = express();
 
+app.use(cors());
+app.options("*", cors());
 app.use(bodyParser.text());
 app.use("/static", express.static(filePath));
-app.use(cors());
 
 let cacheFiles = [];
 app.get("/", (req, res) => {
