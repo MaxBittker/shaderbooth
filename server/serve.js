@@ -3,7 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
 const crypto = require("crypto");
-var cors = require("cors");
+const https = require("https");
+const cors = require("cors");
 
 const filePath = path.join(__dirname, "sketches");
 const port = 3002;
@@ -37,4 +38,12 @@ app.post("/upload", (req, res) => {
   res.send(JSON.stringify({ id }));
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert")
+    },
+    app
+  )
+  .listen(port, () => console.log(`Example app listening on port ${port}!`));
