@@ -30,8 +30,6 @@ Todo:
 
 backend:
 
-- upload function
-- hotlinkable
 - browse examples
 
 features:
