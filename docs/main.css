@@ -277,7 +277,7 @@ body {
   .CodeMirror {
     display: none;
   }
-  .tray-left {
+  #open-share {
     display: none;
   }
 }
