@@ -42,10 +42,16 @@ https
   .createServer(
     {
       key: fs.readFileSync(
-        "/etc/letsencrypt/live/api.shaderbooth.com/fullchain.pem"
+        "/etc/letsencrypt/live/api.shaderbooth.com/fullchain.pem",
+        "utf8"
       ),
       cert: fs.readFileSync(
-        "/etc/letsencrypt/live/api.shaderbooth.com/privkey.pem"
+        "/etc/letsencrypt/live/api.shaderbooth.com/privkey.pem",
+        "utf8"
+      ),
+      ca: fs.readFileSync(
+        "/etc/letsencrypt/live/yourdomain.com/chain.pem",
+        "utf8"
       )
     },
     app
