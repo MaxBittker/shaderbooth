@@ -3,6 +3,7 @@ const { setupWebcam } = require("./src/setup-facemesh.js");
 let shaders = require("./src/pack.shader.js");
 let handleActivity = require("./src/fade.js");
 let buildReference = require("./src/reference.js");
+let share = require("./src/share.js");
 let fs = require("fs");
 let loadingShader = fs.readFileSync(__dirname + "/src/loadingShader.glsl");
 let prefix = fs.readFileSync(__dirname + "/src/prefix.glsl").toString();
@@ -16,6 +17,42 @@ let { paintFace } = require("./src/paint");
 const Editor = require("./src/editor.js");
 
 var editor = new Editor();
+
+const serverAddr = "http://159.203.112.6:3002/";
+function loadShaderFromServer() {
+  if (window.location.search.length > 2) {
+    let id = window.location.search.slice(1);
+    fetch(serverAddr + "static/" + id)
+      .then(response => {
+        if (response.status == 200) {
+          return response.text();
+        } else {
+          alert("I couldnt' find that sketch");
+        }
+      })
+      .then(data => {
+        let code = JSON.parse(data);
+        console.log(code);
+        editor.setValue(code);
+      });
+  }
+}
+loadShaderFromServer();
+let shareButton = document.getElementById("share");
+shareButton.addEventListener("click", () => {
+  fetch(serverAddr + "upload/", {
+    method: "post",
+    body: JSON.stringify(editor.getValue())
+  })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function({ id }) {
+      window.history.pushState({}, "Shaderbooth", "?" + id);
+      document.getElementById("url-copy").value = "Shaderbooth.com/?" + id;
+      loadShaderFromServer();
+    });
+});
 
 function replaceShader() {
   let file = demos[demoIndex];
