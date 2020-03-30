@@ -38,22 +38,21 @@ app.post("/upload", (req, res) => {
   res.send(JSON.stringify({ id }));
 });
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync(
-        "/etc/letsencrypt/live/api.shaderbooth.com/fullchain.pem",
-        "utf8"
-      ),
-      cert: fs.readFileSync(
-        "/etc/letsencrypt/live/api.shaderbooth.com/privkey.pem",
-        "utf8"
-      ),
-      ca: fs.readFileSync(
-        "/etc/letsencrypt/live/yourdomain.com/chain.pem",
-        "utf8"
-      )
-    },
-    app
+const creds = {
+  key: fs.readFileSync(
+    "/etc/letsencrypt/live/api.shaderbooth.com/fullchain.pem",
+    "utf8"
+  ),
+  cert: fs.readFileSync(
+    "/etc/letsencrypt/live/api.shaderbooth.com/privkey.pem",
+    "utf8"
+  ),
+  ca: fs.readFileSync(
+    "/etc/letsencrypt/live/api.shaderbooth.com/chain.pem",
+    "utf8"
   )
+};
+console.log(creds);
+https
+  .createServer(creds, app)
   .listen(port, () => console.log(`Example app listening on port ${port}!`));
