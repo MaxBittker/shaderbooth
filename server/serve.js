@@ -41,8 +41,12 @@ app.post("/upload", (req, res) => {
 https
   .createServer(
     {
-      key: fs.readFileSync("server.key"),
-      cert: fs.readFileSync("server.cert")
+      key: fs.readFileSync(
+        "/etc/letsencrypt/live/api.shaderbooth.com/fullchain.pem"
+      ),
+      cert: fs.readFileSync(
+        "/etc/letsencrypt/live/api.shaderbooth.com/privkey.pem"
+      )
     },
     app
   )

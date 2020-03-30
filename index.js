@@ -18,7 +18,7 @@ const Editor = require("./src/editor.js");
 
 var editor = new Editor();
 
-const serverAddr = "https://159.203.112.6:3002/";
+const serverAddr = "https://api.shaderbooth.com:3002/";
 function loadShaderFromServer() {
   if (window.location.search.length > 2) {
     let id = window.location.search.slice(1);
