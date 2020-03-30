@@ -1,6 +1,6 @@
 # Shaderbooth
 
-Shaderbooth is a browser based framework and editing environment for makeing and sharing sharing indie face filter artworks, Try it out at (shaderbooth.com)[shaderbooth.com]
+Shaderbooth is a browser based framework and editing environment for makeing and sharing sharing indie face filter artworks, Try it out at [shaderbooth.com](shaderbooth.com)
 
 ![demo](demo.png)
 
