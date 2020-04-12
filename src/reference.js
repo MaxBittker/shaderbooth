@@ -14,7 +14,7 @@ require("codemirror/addon/runmode/runmode");
 require("codemirror/addon/runmode/colorize");
 
 let reference = document.getElementById("reference");
-prefix = prefix.replace("precision mediump float;\n", "");
+prefix = prefix.replace("precision highp float;\n", "");
 prefix = prefix.replace(/ *\{[^}]*\} */g, "{}");
 prefix = prefix.replace(/ *\{[^}]*\} */g, "{}");
 prefix = prefix.replace(/ *\{[^}]*\} */g, "{}");
