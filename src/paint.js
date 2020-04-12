@@ -5,7 +5,17 @@ let canvas = document.getElementById("paint");
 ctx = canvas.getContext("2d");
 ctx.translate(canvas.width, 0);
 ctx.scale(-1, 1);
-
+function averagePoints(points) {
+  let x = 0;
+  let y = 0;
+  for (let i = 0; i < points.length; i++) {
+    x += points[i][0];
+    y += points[i][1];
+  }
+  x /= points.length;
+  y /= points.length;
+  return [x, y];
+}
 function drawShape(points) {
   ctx.beginPath();
 
@@ -89,6 +99,9 @@ function paintFace(annotations) {
   ctx.fillStyle = `#0f8`;
   drawShape(hull(leftEye0, 1000));
   drawShape(hull(rightEye0, 1000));
+
+  window.leftEye = averagePoints(leftEye0);
+  window.rightEye = averagePoints(rightEye0);
 
   let outerMouth = [
     ...annotations["lipsUpperOuter"],

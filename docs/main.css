@@ -18,6 +18,7 @@ video {
   bottom: 3;
   z-index: 9;
   display: flex;
+  pointer-events: none;
 }
 .tray-left {
   left: 3;
@@ -30,6 +31,7 @@ video {
   line-height: 24px;
   font-size: 30px;
   padding: 0px;
+  pointer-events: all;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 100%;

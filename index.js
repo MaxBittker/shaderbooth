@@ -169,6 +169,14 @@ setupWebcam({
         faceCenter: () => [
           2 * (1.0 - faceCenter[0] / videoWidth) - 1.0,
           2 * (1.0 - faceCenter[1] / videoHeight) - 1.0
+        ],
+        leftEye: () => [
+          2 * (1.0 - window.leftEye[0] / videoWidth) - 1.0,
+          2 * (1.0 - window.leftEye[1] / videoHeight) - 1.0
+        ],
+        rightEye: () => [
+          2 * (1.0 - window.rightEye[0] / videoWidth) - 1.0,
+          2 * (1.0 - window.rightEye[1] / videoHeight) - 1.0
         ]
       },
 
