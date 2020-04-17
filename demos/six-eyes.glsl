@@ -3,15 +3,24 @@ void main() {
   vec3 cam = getCam(uv);
   vec3 color = cam;
 
-  float offset = 0.1;
+  vec2 eveVector = leftEye - rightEye;
+  float occularDistance = length(eveVector);
 
-  if (getEye(uv - vec2(0., offset)) > 0.6) {
-    color = getPrevious(uv - vec2(0, +offset * 2.));
+  vec2 offset = vec2(occularDistance * 0.5);
+
+  eveVector = normalize(eveVector);
+  eveVector = vec2(-eveVector.y, eveVector.x);
+
+  offset *= eveVector;
+
+  if (getEye(uv - offset) > 0.6) {
+    color = getPrevious(uv - offset * 2.);
   }
-  offset = -0.10;
 
-  if (getEye(uv - vec2(0., offset)) > 0.6) {
-    color = getPrevious(uv - vec2(0, offset));
+  offset *= -1.0;
+
+  if (getEye(uv - offset) > 0.6) {
+    color = getPrevious(uv - offset);
   }
 
   gl_FragColor = vec4(color, 1);
