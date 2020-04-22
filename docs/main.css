@@ -201,6 +201,7 @@ canvas {
 #target {
   /* display: none; */
   /* z-index: -4; */
+  image-rendering: pixelated;
 }
 body {
   width: 100vw;
