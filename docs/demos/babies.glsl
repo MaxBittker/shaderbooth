@@ -8,7 +8,8 @@ void main() {
   for (int i = 0; i < 6; i++) {
     float a = time + TAU * float(i) / 6.;
     vec2 offset = vec2(sin(a), cos(a));
-    offset *= 1.5;
+    offset.x /= targetAspect;
+    offset *= length(leftEye - rightEye) * 5.;
     offset += faceCenter;
     vec2 pos = uv * 2.4;
     if (getFace(pos - offset) > 0.1) {

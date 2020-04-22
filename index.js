@@ -159,12 +159,14 @@ setupWebcam({
           viewportWidth,
           viewportHeight
         ],
+        targetAspect: () => window.innerWidth / window.innerHeight,
         scaledVideoResolution: ({ viewportWidth: vW, viewportHeight: vH }) => {
           let i;
-          return (i =
+          i =
             vW / vH > videoWidth / videoHeight
               ? [videoWidth * (vH / videoHeight), vH]
-              : [vW, videoHeight * (vW / videoWidth)]);
+              : [vW, videoHeight * (vW / videoWidth)];
+          return i;
         },
         faceCenter: () => [
           2 * (1.0 - faceCenter[0] / videoWidth) - 1.0,
