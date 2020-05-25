@@ -64,6 +64,7 @@ function replaceShader() {
       editor.setValue(data);
     });
 }
+replaceShader();
 previousDemo.addEventListener("click", () => {
   demoIndex = (demoIndex + demos.length - 1) % demos.length;
   replaceShader();
@@ -141,6 +142,25 @@ let faceDetectionTexture;
 let hasFace = false;
 
 let faceCenter = [0.5, 0.5];
+
+function convertCoordinate([fx, fy], videoWidth, videoHeight) {
+  x = fx / videoWidth;
+  y = fy / videoHeight;
+  x = 1 - x;
+  y = 1 - y;
+  x = 2 * x - 1.0;
+  y = 2 * y - 1.0;
+  let targetAspect = window.innerWidth / window.innerHeight;
+  let videoAspect = videoWidth / videoHeight;
+  let uvA_x = x / (targetAspect / videoAspect);
+  let uvA_y = y;
+  if (targetAspect < videoAspect) {
+    uvA_x = x;
+    uvA_y = y / (videoAspect / targetAspect);
+  }
+
+  return [uvA_x, uvA_y];
+}
 setupWebcam({
   regl,
   done: (webcam, { videoWidth, videoHeight, getKeyPoints }) => {
@@ -168,18 +188,12 @@ setupWebcam({
               : [vW, videoHeight * (vW / videoWidth)];
           return i;
         },
-        faceCenter: () => [
-          2 * (1.0 - faceCenter[0] / videoWidth) - 1.0,
-          2 * (1.0 - faceCenter[1] / videoHeight) - 1.0
-        ],
-        leftEye: () => [
-          2 * (1.0 - window.leftEye[0] / videoWidth) - 1.0,
-          2 * (1.0 - window.leftEye[1] / videoHeight) - 1.0
-        ],
-        rightEye: () => [
-          2 * (1.0 - window.rightEye[0] / videoWidth) - 1.0,
-          2 * (1.0 - window.rightEye[1] / videoHeight) - 1.0
-        ]
+        faceCenter: () =>
+          convertCoordinate(faceCenter, videoWidth, videoHeight),
+        leftEye: () =>
+          convertCoordinate(window.leftEye, videoWidth, videoHeight),
+        rightEye: () =>
+          convertCoordinate(window.rightEye, videoWidth, videoHeight)
       },
 
       frag: () => (hasFace ? prefix + shaders.fragment : loadingShader),

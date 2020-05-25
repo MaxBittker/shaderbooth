@@ -56,6 +56,7 @@ function setupWebcam(options) {
 
     function tryGetUserMedia() {
       navigator.mediaDevices
+        // .getDisplayMedia({
         .getUserMedia({
           video: true,
           audio: false

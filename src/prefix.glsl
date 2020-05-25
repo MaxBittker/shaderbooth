@@ -22,26 +22,25 @@ vec2 pixel = 1.0 / resolution;
 vec3 getCam(vec2 pos) {
   float videoAspect = videoResolution.x / videoResolution.y;
 
-  vec2 uvAspect = vec2(pos.x * targetAspect / videoAspect, pos.y);
-  if ((targetAspect) < (videoResolution.x / videoResolution.y)) {
-    uvAspect = vec2(pos.x, pos.y * videoAspect / targetAspect);
+  vec2 uvA = vec2(pos.x * targetAspect / videoAspect, pos.y);
+  if (targetAspect < videoAspect) {
+    uvA = vec2(pos.x, pos.y * videoAspect / targetAspect);
   }
-  vec2 webcamCoord = (uvAspect) / 2.0 + vec2(0.5);
+  vec2 webcamCoord = (uvA) / 2.0 + vec2(0.5);
   vec2 flipwcord = vec2(1.) - webcamCoord;
 
   float howFar = 1.0;
-  if (uvAspect.x <= -1.0 || uvAspect.x > 1.0 || uvAspect.y < -1.0 ||
-      uvAspect.y > 1.0) {
-    howFar = max(abs(uvAspect.x), abs(uvAspect.y)) - 1.0;
+  if (uvA.x < -1.0 || uvA.x > 1.0 || uvA.y < -1.0 || uvA.y > 1.0) {
+    howFar = max(abs(uvA.x), abs(uvA.y)) - 1.0;
     howFar = 2.0 + float(int(howFar * 5.));
     vec2 towardsCenter = vec2(0., 0.0);
-    if (uvAspect.x < -1.) {
+    if (uvA.x < -1.) {
       towardsCenter = vec2(-1.0, 0.0);
-    } else if (uvAspect.x > 1.) {
+    } else if (uvA.x > 1.) {
       towardsCenter = vec2(1.0, 0.0);
-    } else if (uvAspect.y > 1.) {
+    } else if (uvA.y > 1.) {
       towardsCenter = vec2(0.0, 1.0);
-    } else if (uvAspect.y < -1.) {
+    } else if (uvA.y < -1.) {
       towardsCenter = vec2(0.0, -1.0);
     }
     flipwcord += towardsCenter * (1. / 8.) * howFar;
@@ -75,31 +74,31 @@ vec3 getPrevious(vec2 pos) {
 
 float getFace(vec2 pos) {
   float videoAspect = videoResolution.x / videoResolution.y;
-  vec2 uvAspect = vec2(pos.x * targetAspect / videoAspect, pos.y);
+  vec2 uvA = vec2(pos.x * targetAspect / videoAspect, pos.y);
   if ((targetAspect) < (videoResolution.x / videoResolution.y)) {
-    uvAspect = vec2(pos.x, pos.y * videoAspect / targetAspect);
+    uvA = vec2(pos.x, pos.y * videoAspect / targetAspect);
   }
-  vec2 webcamCoord = (uvAspect) / 2.0 + vec2(0.5);
+  vec2 webcamCoord = (uvA) / 2.0 + vec2(0.5);
   vec2 flipwcord = vec2(1.) - webcamCoord;
   return texture2D(maskTex, flipwcord).b;
 }
 float getEye(vec2 pos) {
   float videoAspect = videoResolution.x / videoResolution.y;
-  vec2 uvAspect = vec2(pos.x * targetAspect / videoAspect, pos.y);
+  vec2 uvA = vec2(pos.x * targetAspect / videoAspect, pos.y);
   if ((targetAspect) < (videoResolution.x / videoResolution.y)) {
-    uvAspect = vec2(pos.x, pos.y * videoAspect / targetAspect);
+    uvA = vec2(pos.x, pos.y * videoAspect / targetAspect);
   }
-  vec2 webcamCoord = (uvAspect) / 2.0 + vec2(0.5);
+  vec2 webcamCoord = (uvA) / 2.0 + vec2(0.5);
   vec2 flipwcord = vec2(1.) - webcamCoord;
   return texture2D(maskTex, flipwcord).g;
 }
 float getMouth(vec2 pos) {
   float videoAspect = videoResolution.x / videoResolution.y;
-  vec2 uvAspect = vec2(pos.x * targetAspect / videoAspect, pos.y);
+  vec2 uvA = vec2(pos.x * targetAspect / videoAspect, pos.y);
   if ((targetAspect) < (videoResolution.x / videoResolution.y)) {
-    uvAspect = vec2(pos.x, pos.y * videoAspect / targetAspect);
+    uvA = vec2(pos.x, pos.y * videoAspect / targetAspect);
   }
-  vec2 webcamCoord = (uvAspect) / 2.0 + vec2(0.5);
+  vec2 webcamCoord = (uvA) / 2.0 + vec2(0.5);
   vec2 flipwcord = vec2(1.) - webcamCoord;
   return texture2D(maskTex, flipwcord).r;
 }
