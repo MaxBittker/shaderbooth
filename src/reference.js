@@ -16,7 +16,8 @@ require("codemirror/addon/runmode/colorize");
 let reference = document.getElementById("reference");
 prefix = prefix.replace("precision highp float;\n", "");
 
-prefix = prefix.replace(/ *\{[^]*?^\}/gm, "{}");
+prefix = prefix.replace(/ *\{[^]*?^\}/gm, "{…}");
+prefix = prefix.replace(/ *\{[^]*?\} */g, "{…}");
 
 prefix = prefix.replace(/\/\/ INTERNAL\n.*\n/g, "");
 prefix = prefix.replace(/\n\n/g, "\n");
