@@ -82,6 +82,7 @@ float getFace(vec2 pos) {
   vec2 flipwcord = vec2(1.) - webcamCoord;
   return texture2D(maskTex, flipwcord).b;
 }
+
 float getEye(vec2 pos) {
   float videoAspect = videoResolution.x / videoResolution.y;
   vec2 uvA = vec2(pos.x * targetAspect / videoAspect, pos.y);
@@ -92,6 +93,7 @@ float getEye(vec2 pos) {
   vec2 flipwcord = vec2(1.) - webcamCoord;
   return texture2D(maskTex, flipwcord).g;
 }
+
 float getMouth(vec2 pos) {
   float videoAspect = videoResolution.x / videoResolution.y;
   vec2 uvA = vec2(pos.x * targetAspect / videoAspect, pos.y);
