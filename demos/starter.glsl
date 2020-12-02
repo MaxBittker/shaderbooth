@@ -24,7 +24,7 @@ void main() {
   // color = getPrevious(uv + (cam.rg-cam.bb)*0.1);
 
   if (face > 0.2) {
-    color = cam * blue;
+    color = cam * pink;
     // or this one
     // color = getPrevious(rotate(uv, 0.1) * 1.1);
   }
@@ -38,7 +38,7 @@ void main() {
   }
   // lipstick
   if (mouth > 0.4) {
-    color = cam * red;
+    color = cam * blue;
   }
   if (mouth > 0.6) {
     color = cam;

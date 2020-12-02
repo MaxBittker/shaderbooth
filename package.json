@@ -27,6 +27,7 @@
     "glsl-worley": "^1.0.2",
     "hull.js": "^1.0.0",
     "regl": "github:maxbittker/regl",
+    "resl": "^1.0.3",
     "uglifyify": "^4.0.5",
     "webrtc-adapter": "^6.4.8"
   },
