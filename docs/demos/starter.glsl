@@ -23,24 +23,26 @@ void main() {
   // try uncommenting this line:
   // color = getPrevious(uv + (cam.rg-cam.bb)*0.1);
 
+  vec2 offset = uv - faceCenter;
   if (face > 0.2) {
     color = cam * pink;
+    color.g += .1*sin((offset.y +offset.x)*100.) ;
     // or this one
-    // color = getPrevious(rotate(uv, 0.1) * 1.1);
+   // color = getPrevious(rotate(uv, 0.1) * 1.1);
   }
 
   // eye black
   if (eye > 0.3) {
-    color = black;
+    color += green*.3;
   }
   if (eye > 0.6) {
     color = cam;
   }
   // lipstick
   if (mouth > 0.4) {
-    color = cam * blue;
+      color += green*.3;
   }
-  if (mouth > 0.6) {
+  if (mouth > 0.6 ) {
     color = cam;
   }
   if (max(abs(uv.x), abs(uv.y)) > 0.99) {
